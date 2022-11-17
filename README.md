@@ -79,3 +79,4 @@ A més de l’enllaç a Git de la tasca resolta, hauràs d’incloure almenys do
 ## Util links
 - *CRUD con Java Spring Boot y MySQL:* https://amoelcodigo.com/crud-java-sprig-mysql/
 - *CRUD REST con Spring Boot y JPA:* https://javadesde0.com/crud-rest-con-spring-boot-y-jpa/
+- *CRUD en Java Spring Boot + Thymeleaf y MySQL:* https://www.youtube.com/watch?v=Ymv2e4-L1rc&list=PLxxZ0339925GvBiF39ieLkMjyvMlqihB2

@@ -40,7 +40,7 @@ public class Sucursal {
 		return paisSucursal;
 	}
 	
-	public void setQuantitatQuilos(String pais) {
+	public void setPais(String pais) {
 		this.paisSucursal = pais;
 	}
 

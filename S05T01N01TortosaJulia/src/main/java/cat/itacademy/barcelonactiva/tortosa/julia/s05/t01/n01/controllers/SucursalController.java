@@ -42,64 +42,72 @@ public class SucursalController {
 		return "/sucursal/list";
 	}
 	
-//	@GetMapping("/getAll")
-//	public ResponseEntity<List<Sucursal>> getAllSucursals() {
-//		try {
-//			List<Sucursal> sucursals = new ArrayList<Sucursal>();
-//		
-//			sucursalRepository.findAll().forEach(sucursals::add);
-//		
-//			return new ResponseEntity<>(sucursals, HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
-//
-//	@GetMapping("/getOne/{id}")
-//	public ResponseEntity<Sucursal> getSucursalById(@PathVariable(name = "id") int id) {
-//	Optional<Sucursal> sucursalData = sucursalRepository.findById(id);
-//	
-//		if (sucursalData.isPresent()) {
-//			return new ResponseEntity<>(sucursalData.get(), HttpStatus.OK);
-//	    } else {
-//	    	return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//	    }
-//	}
-//	
-//	@PostMapping("/add")
-//	public ResponseEntity<Sucursal> createSucursal(@RequestBody Sucursal sucursal) {
-//		try {
-//			Sucursal _sucursal = sucursalRepository
-//					.save(new Sucursal(sucursal.getNom(), sucursal.getPais()));
-//			return new ResponseEntity<>(_sucursal, HttpStatus.CREATED);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//  }
-//
-//	@PutMapping("/update")
-//	public ResponseEntity<Sucursal> updateSucursal(@RequestBody Sucursal sucursal) {
-//		Sucursal sucursalData = sucursalRepository.findSucursalByNomSucursal(sucursal.getNom());
-//
-//		if (sucursalData != null) {
-//			Sucursal _sucursal = sucursalData;
-//			_sucursal.setNom(sucursal.getNom());
-//			_sucursal.setPais(sucursal.getPais());
-//			return new ResponseEntity<>(sucursalRepository.save(_sucursal), HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
-//
-//	@DeleteMapping("/delete/{id}")
-//	public ResponseEntity<HttpStatus> deleteSucursal(@PathVariable("id") int id) {
-//		try {
-//			sucursalRepository.deleteById(id);
-//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
+	@GetMapping("/create")
+	public String create(Model model) {
+		List<Sucursal> llistatSucursals = sucursalService.listAll();
+		model.addAttribute("Titol", "Llista de Sucursals");
+		model.addAttribute("sucursals", llistatSucursals);
+		return "/sucursal/frmCreate";
+	}
+	
+	@GetMapping("/getAll")
+	public ResponseEntity<List<Sucursal>> getAllSucursals() {
+		try {
+			List<Sucursal> sucursals = new ArrayList<Sucursal>();
+		
+			sucursalRepository.findAll().forEach(sucursals::add);
+		
+			return new ResponseEntity<>(sucursals, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@GetMapping("/getOne/{id}")
+	public ResponseEntity<Sucursal> getSucursalById(@PathVariable(name = "id") int id) {
+	Optional<Sucursal> sucursalData = sucursalRepository.findById(id);
+	
+		if (sucursalData.isPresent()) {
+			return new ResponseEntity<>(sucursalData.get(), HttpStatus.OK);
+	    } else {
+	    	return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	}
+	
+	@PostMapping("/add")
+	public ResponseEntity<Sucursal> createSucursal(@RequestBody Sucursal sucursal) {
+		try {
+			Sucursal _sucursal = sucursalRepository
+					.save(new Sucursal(sucursal.getNom(), sucursal.getPais()));
+			return new ResponseEntity<>(_sucursal, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+  }
+
+	@PutMapping("/update")
+	public ResponseEntity<Sucursal> updateSucursal(@RequestBody Sucursal sucursal) {
+		Sucursal sucursalData = sucursalRepository.findSucursalByNomSucursal(sucursal.getNom());
+
+		if (sucursalData != null) {
+			Sucursal _sucursal = sucursalData;
+			_sucursal.setNom(sucursal.getNom());
+			_sucursal.setPais(sucursal.getPais());
+			return new ResponseEntity<>(sucursalRepository.save(_sucursal), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<HttpStatus> deleteSucursal(@PathVariable("id") int id) {
+		try {
+			sucursalRepository.deleteById(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
 
 }

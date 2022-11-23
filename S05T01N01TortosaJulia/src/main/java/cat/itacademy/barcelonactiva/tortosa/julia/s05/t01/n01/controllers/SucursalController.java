@@ -44,9 +44,9 @@ public class SucursalController {
 	
 	@GetMapping("/create")
 	public String create(Model model) {
-		List<Sucursal> llistatSucursals = sucursalService.listAll();
-		model.addAttribute("Titol", "Llista de Sucursals");
-		model.addAttribute("sucursals", llistatSucursals);
+		Sucursal sucursal = new Sucursal();
+		model.addAttribute("Titol", "Formulari: Nova sucursal");
+		model.addAttribute("sucursal", sucursal);
 		return "/sucursal/frmCreate";
 	}
 	

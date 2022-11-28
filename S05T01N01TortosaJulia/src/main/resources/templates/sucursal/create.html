@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="template/template :: head">
+<meta charset="UTF-8">
+<title>Crear sucursal</title>
 </head>
 <body>
 	<header th:replace="template/template :: header"></header>
@@ -11,27 +13,24 @@
 			<div class="card-header bg-dark text-white"></div>
 			<div class="card-body"></div>
 
-			<form>
+			<form th:action="@{/sucursal/save}" method="post" >
 				<div class="form-group row">
-					<label class="col-md-2" for="noms">Noms:</label> 
-					<input type="text" class="form-control form-control-sm col-md-6" id="noms"
-						placeholder="Noms de la sucursal"> 
+					<label class="col-md-2" for="nomSucursal">Nom</label> 
+					<input type="text" class="form-control form-control-sm col-md-6" id="nomSucursal"
+						name="nom" placeholder="Nom de la sucursal"> 
 						<small></small>
 				</div>
 				
 				<div class="form-group row">
-					<label class="col-md-2" for="paisos">Paisos:</label> 
-					<select
+					<label class="col-md-2" for="paisSucursal">Pais</label> 
+					<input
 						type="text" class="form-control form-control-sm col-md-6"
-						id="paisos">
-						<option>Espanya</option>
-						<option>Alemania</option>
-						<option>França</option>
-					</select> 
+						id="paisSucursal" name="pais" placeholder="Pais de la sucursal">
+
 					<small></small>
 				</div>
 				<div class="card-footer bg-dark">
-					<input type="submit" class="btn btn-primary btn-sm" value="Submit">
+					<button type="submit" class="btn btn-success" >Submit</button>
 				</div>
 			</form>
 		</div>

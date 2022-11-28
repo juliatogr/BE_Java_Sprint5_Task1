@@ -17,6 +17,8 @@ public class Sucursal {
 	private String paisSucursal;
 	
 	public Sucursal() {
+		this.nomSucursal = "";
+		this.paisSucursal = "";
 	}
 	
 	public Sucursal(String nom, String pais) {

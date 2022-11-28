@@ -9,8 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -46,10 +49,17 @@ public class SucursalController {
 	public String create(Model model) {
 		Sucursal sucursal = new Sucursal();
 		model.addAttribute("Titol", "Formulari: Nova sucursal");
-		model.addAttribute("sucursal", sucursal);
-		return "/sucursal/frmCreate";
+		model.addAttribute("Sucursal", sucursal);
+		return "/sucursal/create";
 	}
 	
+	@PostMapping("/save")
+	public String save(Sucursal sucursal) {
+		System.out.println(sucursal);
+		sucursalService.saveOne(sucursal);
+		return "redirect:/sucursal/";
+	}
+		
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Sucursal>> getAllSucursals() {
 		try {

@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="template/template :: head">
 <meta charset="UTF-8">
-<title>Crear sucursal</title>
+<title>Actualitzar sucursal</title>
 </head>
 <body>
+	
 	<header th:replace="template/template :: header"></header>
-
+	<h1>Actualitzar sucursals</h1>
 	<div class="container">
 
 		<div class="card bg-light">
@@ -14,10 +15,11 @@
 			<div class="card-body"></div>
 
 			<form th:action="@{/sucursal/save}" method="post" >
+			<input type="hidden" name="id" th:value="${sucursal.id}">
 				<div class="form-group row">
 					<label class="col-md-2" for="nomSucursal">Nom</label> 
 					<input type="text" class="form-control form-control-sm col-md-6" id="nomSucursal"
-						name="nom" placeholder="Nom de la sucursal"> 
+						name="nom" th:value="${sucursal.nom}"> 
 						<small></small>
 				</div>
 				
@@ -25,12 +27,12 @@
 					<label class="col-md-2" for="paisSucursal">Pais</label> 
 					<input
 						type="text" class="form-control form-control-sm col-md-6"
-						id="paisSucursal" name="pais" placeholder="Pais de la sucursal">
+						id="paisSucursal" name="pais" th:value="${sucursal.pais}">
 
 					<small></small>
 				</div>
 				<div class="card-footer bg-dark">
-					<button type="submit" class="btn btn-success" >Submit</button>
+					<button type="submit" class="btn btn-success" >Actualitzar</button>
 				</div>
 			</form>
 		</div>

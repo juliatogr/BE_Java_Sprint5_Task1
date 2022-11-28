@@ -49,14 +49,27 @@ public class SucursalController {
 	public String create(Model model) {
 		Sucursal sucursal = new Sucursal();
 		model.addAttribute("Titol", "Formulari: Nova sucursal");
-		model.addAttribute("Sucursal", sucursal);
+		model.addAttribute("sucursal", sucursal);
 		return "/sucursal/create";
 	}
 	
 	@PostMapping("/save")
 	public String save(Sucursal sucursal) {
-		System.out.println(sucursal);
+		System.out.println(sucursal.getId());
 		sucursalService.saveOne(sucursal);
+		return "redirect:/sucursal/";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable int id, Model model) {
+		Sucursal sucursal = sucursalService.findByID(id);
+		model.addAttribute("sucursal", sucursal);
+		return "/sucursal/edit";
+	}
+	
+	@GetMapping("/remove/{id}")
+	public String remove(@PathVariable int id) {
+		sucursalService.deleteOne(id);
 		return "redirect:/sucursal/";
 	}
 		
@@ -97,7 +110,7 @@ public class SucursalController {
 
 	@PutMapping("/update")
 	public ResponseEntity<Sucursal> updateSucursal(@RequestBody Sucursal sucursal) {
-		Sucursal sucursalData = sucursalRepository.findSucursalByNomSucursal(sucursal.getNom());
+		Sucursal sucursalData = sucursalRepository.findById(sucursal.getId()).get();
 
 		if (sucursalData != null) {
 			Sucursal _sucursal = sucursalData;

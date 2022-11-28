@@ -26,11 +26,11 @@
 			</thead>
 			<tbody>
 				<tr th:each="sc:${sucursals}">
-					<th scope="row" th:text="${sc.id}">1</th>
+					<th scope="row" th:text="${sc.id}"></th>
 					<td th:text="${sc.nom}"></td>
 					<td th:text="${sc.pais}"></td>
-					<td><a class="btn btn-warning">Editar</a></td>
-					<td><a class="btn btn-danger">Eliminar</a></td>
+					<td><a th:href="@{/sucursal/edit/{id}  (id = ${sc.id})}" class="btn btn-warning">Editar</a></td>
+					<td><a th:href="@{/sucursal/remove/{id}  (id = ${sc.id})}" class="btn btn-danger">Eliminar</a></td>
 				</tr>
 				
 			</tbody>

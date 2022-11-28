@@ -8,5 +8,5 @@ import cat.itacademy.barcelonactiva.tortosa.julia.s05.t01.n01.models.domain.Sucu
 
 @Repository
 public interface SucursalRepository extends JpaRepository<Sucursal, Integer> {
-	 Sucursal findSucursalByNomSucursal(String nomSucursal);
+
 }

@@ -20,17 +20,19 @@
 					<th scope="col">Id</th>
 					<th scope="col">Nom</th>
 					<th scope="col">Pais</th>
+					<th scope="col">Tipus</th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="sc:${sucursals}">
-					<th scope="row" th:text="${sc.id}"></th>
+					<th scope="row" th:text="${sc.pk_SucursalID}"></th>
 					<td th:text="${sc.nom}"></td>
 					<td th:text="${sc.pais}"></td>
-					<td><a th:href="@{/sucursal/edit/{id}  (id = ${sc.id})}" class="btn btn-warning">Editar</a></td>
-					<td><a th:href="@{/sucursal/remove/{id}  (id = ${sc.id})}" class="btn btn-danger">Eliminar</a></td>
+					<td ></td>
+					<td><a th:href="@{/sucursal/edit/{id}  (id = ${sc.pk_SucursalID})}" class="btn btn-warning">Editar</a></td>
+					<td><a th:href="@{/sucursal/remove/{id}  (id = ${sc.pk_SucursalID})}" class="btn btn-danger">Eliminar</a></td>
 				</tr>
 				
 			</tbody>

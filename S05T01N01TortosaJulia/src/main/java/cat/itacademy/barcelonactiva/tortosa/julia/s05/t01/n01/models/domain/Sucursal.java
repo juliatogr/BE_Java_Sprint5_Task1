@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Sucursal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(unique = true, nullable = false)
+	@Column(name="pk_SucursalID", unique = true, nullable = false)
 	private int pk_SucursalID;
 	
 	@Column(name = "nom", unique = true, nullable = false)
@@ -17,21 +17,23 @@ public class Sucursal {
 	private String paisSucursal;
 	
 	public Sucursal() {
-		this.nomSucursal = "";
-		this.paisSucursal = "";
 	}
 	
 	public Sucursal(String nom, String pais) {
 		this.nomSucursal = nom;
 		this.paisSucursal = pais;
-	}	
+	}
 	
-	public int getId() {
+	public int getPk_SucursalID() {
 		return pk_SucursalID;
 	}
 
 	public String getNom() {
 		return nomSucursal;
+	}
+	
+	public void setPk_SucursalID(int pk_SucursalID) {
+		this.pk_SucursalID = pk_SucursalID;
 	}
 	
 	public void setNom(String nom) {

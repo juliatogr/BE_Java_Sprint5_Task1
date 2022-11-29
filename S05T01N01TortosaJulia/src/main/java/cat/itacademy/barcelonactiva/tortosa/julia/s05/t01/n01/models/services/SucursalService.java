@@ -15,6 +15,7 @@ public class SucursalService implements ISucursalService {
 	@Autowired
 	private SucursalRepository sucursalRepository;
 	
+	
 	@Override
 	public List<Sucursal> listAll() {
 		

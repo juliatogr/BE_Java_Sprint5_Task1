@@ -10,22 +10,22 @@
 	<div class="container">
 
 		<div class="card bg-light">
-			<div class="card-header bg-dark text-white"></div>
+			<div class="card-header bg-dark text-white" th:text="${titol}"></div>
 			<div class="card-body"></div>
 
-			<form th:action="@{/sucursal/save}" method="post" >
+			<form th:action="@{/sucursal/save}" th:object=${sucursal} method="post" >
 				<div class="form-group row">
-					<label class="col-md-2" for="nomSucursal">Nom</label> 
-					<input type="text" class="form-control form-control-sm col-md-6" id="nomSucursal"
+					<label class="col-md-2" for="nom">Nom</label> 
+					<input type="text" th:field="*{nom}" class="form-control form-control-sm col-md-6" id="nom"
 						name="nom" placeholder="Nom de la sucursal"> 
 						<small></small>
 				</div>
 				
 				<div class="form-group row">
-					<label class="col-md-2" for="paisSucursal">Pais</label> 
+					<label class="col-md-2" for="pais">Pais</label> 
 					<input
-						type="text" class="form-control form-control-sm col-md-6"
-						id="paisSucursal" name="pais" placeholder="Pais de la sucursal">
+						type="text" th:field="*{pais}" class="form-control form-control-sm col-md-6"
+						id="pais" name="pais" placeholder="Pais de la sucursal">
 
 					<small></small>
 				</div>

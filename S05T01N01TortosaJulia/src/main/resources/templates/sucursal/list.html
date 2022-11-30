@@ -11,7 +11,7 @@
 	</div>
 	<div class="container">
 
-		<a class="btn btn-primary btn-sm" th:href="@{/sucursal/create}"
+		<a class="btn btn-primary btn-sm" th:href="@{/sucursal/add}"
 			th:text="'Nova Sucursal'" title="Crear nova sucursal">
 		</a>
 		<table class="table">
@@ -28,11 +28,11 @@
 			<tbody>
 				<tr th:each="sc:${sucursals}">
 					<th scope="row" th:text="${sc.pk_SucursalID}"></th>
-					<td th:text="${sc.nom}"></td>
-					<td th:text="${sc.pais}"></td>
-					<td ></td>
-					<td><a th:href="@{/sucursal/edit/{id}  (id = ${sc.pk_SucursalID})}" class="btn btn-warning">Editar</a></td>
-					<td><a th:href="@{/sucursal/remove/{id}  (id = ${sc.pk_SucursalID})}" class="btn btn-danger">Eliminar</a></td>
+					<td th:text="${sc.nomSucursal}"></td>
+					<td th:text="${sc.paisSucursal}"></td>
+					<td  th:text="${sc.tipusSucursal}"></td>
+					<td><a th:href="@{/sucursal/update/{id}  (id = ${sc.pk_SucursalID})}" class="btn btn-warning">Editar</a></td>
+					<td><a th:href="@{/sucursal/delete/{id}  (id = ${sc.pk_SucursalID})}" class="btn btn-danger">Eliminar</a></td>
 				</tr>
 				
 			</tbody>

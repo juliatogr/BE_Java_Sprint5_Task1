@@ -16,12 +16,7 @@
 
 			<form th:action="@{/sucursal/save}" th:object="${sucursal}" method="post" >
 			
-				<div class="form-group row">
-					<label class="col-md-2" for="pk_SucursalID">Id</label> 
-					<input type="text" th:field="*{pk_SucursalID}" class="form-control form-control-sm col-md-6" id="pk_SucursalID"
-						name="pk_SucursalID" placeholder="Id de la sucursal"> 
-						<small></small>
-				</div>
+				<input type="hidden" th:field="*{pk_SucursalID}">
 				<div class="form-group row">
 					<label class="col-md-2" for="nom">Nom</label> 
 					<input type="text" th:field="*{nom}" class="form-control form-control-sm col-md-6" id="nom"

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cat.itacademy.barcelonactiva.tortosa.julia.s05.t01.n01.models.domain.Sucursal;
+import cat.itacademy.barcelonactiva.tortosa.julia.s05.t01.n01.models.dto.SucursalDTO;
 import cat.itacademy.barcelonactiva.tortosa.julia.s05.t01.n01.models.services.ISucursalService;
 import cat.itacademy.barcelonactiva.tortosa.julia.s05.t01.n01.repository.SucursalRepository;
 
@@ -38,13 +39,13 @@ public class SucursalController {
 
 	@GetMapping("/")
 	public String listAll(Model model) {
-		List<Sucursal> llistatSucursals = sucursalService.listAll();
+		List<SucursalDTO> llistatSucursals = sucursalService.listAll();
 		model.addAttribute("Titol", "Llista de Sucursals");
 		model.addAttribute("sucursals", llistatSucursals);
 		return "/sucursal/list";
 	}
 	
-	@GetMapping("/create")
+	@GetMapping("/add")
 	public String create(Model model) {
 		Sucursal sucursal = new Sucursal();
 		model.addAttribute("titol", "Formulari: Nova sucursal");
@@ -60,7 +61,7 @@ public class SucursalController {
 		return "redirect:/sucursal/";
 	}
 	
-	@GetMapping("/edit/{pk_SucursalID}")
+	@GetMapping("/update/{pk_SucursalID}")
 	public String edit(@PathVariable("pk_SucursalID") int pk_SucursalID, Model model) {
 		Sucursal sucursal = sucursalService.findByID(pk_SucursalID);
 		model.addAttribute("sucursal", sucursal);
@@ -68,70 +69,9 @@ public class SucursalController {
 		return "/sucursal/edit";
 	}
 	
-	@GetMapping("/remove/{pk_SucursalID}")
+	@GetMapping("/delete/{pk_SucursalID}")
 	public String remove(@PathVariable int pk_SucursalID) {
 		sucursalService.deleteOne(pk_SucursalID);
 		return "redirect:/sucursal/";
 	}
-//		
-//	@GetMapping("/getAll")
-//	public ResponseEntity<List<Sucursal>> getAllSucursals() {
-//		try {
-//			List<Sucursal> sucursals = new ArrayList<Sucursal>();
-//		
-//			sucursalRepository.findAll().forEach(sucursals::add);
-//		
-//			return new ResponseEntity<>(sucursals, HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
-//
-//	@GetMapping("/getOne/{pk_SucursalID}")
-//	public ResponseEntity<Sucursal> getSucursalById(@PathVariable(name = "pk_SucursalID") int pk_SucursalID) {
-//	Optional<Sucursal> sucursalData = sucursalRepository.findById(pk_SucursalID);
-//	
-//		if (sucursalData.isPresent()) {
-//			return new ResponseEntity<>(sucursalData.get(), HttpStatus.OK);
-//	    } else {
-//	    	return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//	    }
-//	}
-//	
-//	@PostMapping("/add")
-//	public ResponseEntity<Sucursal> createSucursal(@RequestBody Sucursal sucursal) {
-//		try {
-//			Sucursal _sucursal = sucursalRepository
-//					.save(new Sucursal(sucursal.getNom(), sucursal.getPais()));
-//			return new ResponseEntity<>(_sucursal, HttpStatus.CREATED);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//  }
-//
-//	@PutMapping("/update")
-//	public ResponseEntity<Sucursal> updateSucursal(@RequestBody Sucursal sucursal) {
-//		Sucursal sucursalData = sucursalRepository.findById(sucursal.getPk_SucursalID()).get();
-//
-//		if (sucursalData != null) {
-//			Sucursal _sucursal = sucursalData;
-//			_sucursal.setNom(sucursal.getNom());
-//			_sucursal.setPais(sucursal.getPais());
-//			return new ResponseEntity<>(sucursalRepository.save(_sucursal), HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
-//
-//	@DeleteMapping("/delete/{pk_SucursalID}")
-//	public ResponseEntity<HttpStatus> deleteSucursal(@PathVariable("pk_SucursalID") int pk_SucursalID) {
-//		try {
-//			sucursalRepository.deleteById(pk_SucursalID);
-//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
-
-
 }

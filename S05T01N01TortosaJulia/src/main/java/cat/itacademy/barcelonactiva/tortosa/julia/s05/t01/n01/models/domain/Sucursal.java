@@ -3,7 +3,7 @@ package cat.itacademy.barcelonactiva.tortosa.julia.s05.t01.n01.models.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sucursals")
+@Table(name = "sucursal")
 public class Sucursal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -60,9 +60,15 @@ public class SucursalDTO {
 
 	public void setPaisSucursal(String paisSucursal) {
 		this.paisSucursal = paisSucursal;
+		
+		if (isUE()) {
+			this.tipusSucursal = "UE";
+		} else {
+			this.tipusSucursal = "Fora UE";
+		}
 	}
 	
-	public boolean isUE() {
+	private boolean isUE() {
 		boolean isUE = false;
 		Optional<String> optPais = Arrays.stream(paisos).filter(p->p.equals(this.paisSucursal)).findAny();
 		

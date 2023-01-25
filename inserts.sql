@@ -1,12 +1,12 @@
 USE testdb;
 
-DROP TABLE IF EXISTS sucursals ;
+DROP TABLE IF EXISTS sucursal ;
 
-INSERT INTO sucursals(nom, pais) VALUES 
+INSERT INTO sucursal(nom, pais) VALUES 
 ("Llantas y motores", "Espanya"),
 ("Merch", "Regne Unit"),
 ("Playground", "Dinamarca"),
 ("CustomI", "Itàlia")
 ;
 
-SELECT * FROM sucursals;
+SELECT * FROM sucursal;
